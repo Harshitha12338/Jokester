@@ -1,0 +1,25 @@
+{
+  "onboarding": {
+    "appName": "Jokester",
+    "login": "Login",
+    "haveAccount": "Already have an account",
+    "noAccount": "Don't have an account?",
+    "signup": "Sign up",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "logout": "Logout",
+    "name": "Full name",
+    "emptyEmail": "Please enter email id",
+    "emptyPassword": "Please enter password",
+    "emptyName": "Please enter full name",
+    "emptyConPassword": "Please enter Confirm Password",
+    "emaildValid": "Please enter valid email id",
+    "passwordValid": "Password should be more than 6 characters.",
+    "passwordMatch": "Confirm password should be same as Password",
+    "serverError": "Something went wrong!",
+    "userExist": "User already Exists!",
+    "userDoesNotExist":"Oops, User does not exist!",
+    "invalidCredentials":"Oops, Invalid Credentials!"
+  }
+}
