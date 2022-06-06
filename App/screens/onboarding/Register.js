@@ -1,4 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
+import axios from 'axios';
 import {Button, HStack, Image, Input, VStack} from 'native-base';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
@@ -9,7 +10,7 @@ import images from '../../assets/images';
 import Loader from '../../components/Loader';
 import Colors from '../../theme/Colors';
 import fonts from '../../theme/Fonts';
-import {screenHeight} from '../../utils';
+import {screenHeight, isEmailValid} from '../../utils';
 import {updateUser} from './action';
 import style from './style';
 
@@ -44,22 +45,17 @@ const Register = props => {
         conPassword: confirmPassword,
       };
       setLoader(true);
-      fetch('https://backend.jokester.in/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          body: JSON.stringify(data),
-        },
-      })
-        .then(response => response.json())
-        .then(responseJson => {
-          console.log(responseJson);
+
+      axios
+        .post('http://backend.jokester.co.in/registeration', data)
+        .then(() => {
+          alert('Successfully signed up');
           setLoader(false);
           navigation.navigate('dashboard');
         })
-        .catch(error => {
-          console.log(error, 'error');
+        .catch(err => {
+          alert('Email already exists');
+          console.log(err);
           setLoader(false);
         });
     }
@@ -89,7 +85,6 @@ const Register = props => {
             mt={1}
             mb={3}
             value={name}
-            secureTextEntry={true}
             variant={'unstyled'}
             onChangeText={text => setName(text)}
             style={style.inputStyle}

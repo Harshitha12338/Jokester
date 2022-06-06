@@ -3,15 +3,15 @@ import axios from 'axios';
 import {Button, HStack, Image, Input, VStack} from 'native-base';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {Text, StyleSheet} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
+// import RNFetchBlob from 'rn-fetch-blob';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {connect} from 'react-redux';
 import images from '../../assets/images';
 import Loader from '../../components/Loader';
-import {AuthApi} from '../../services';
 import Colors from '../../theme/Colors';
 import fonts from '../../theme/Fonts';
-import {screenHeight} from '../../utils';
+import {isEmailValid, screenHeight} from '../../utils';
 import {updateUser} from './action';
 import style from './style';
 
@@ -36,25 +36,16 @@ const Login = props => {
         password: password,
       };
       setLoader(true);
-      fetch('https://backend.jokester.in/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          body: JSON.stringify(data),
-        },
-      })
-        .then(response => response.json())
-        .then(responseJson => {
-          console.log(responseJson);
-          setLoader(false);
+      axios
+        .post('http://backend.jokester.co.in/login', data)
+        .then(res => {
           navigation.navigate('dashboard');
+          setLoader(false);
         })
-        .catch(error => {
-          console.log(error, 'error');
+        .catch(err => {
+          alert('Email is not registered!');
           setLoader(false);
         });
-      console.log(props.userInfo);
     }
   };
   return (

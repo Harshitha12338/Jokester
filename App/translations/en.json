@@ -14,7 +14,7 @@
     "emptyPassword": "Please enter password",
     "emptyName": "Please enter full name",
     "emptyConPassword": "Please enter Confirm Password",
-    "emaildValid": "Please enter valid email id",
+    "emailValid": "Please enter valid email id",
     "passwordValid": "Password should be more than 6 characters.",
     "passwordMatch": "Confirm password should be same as Password",
     "serverError": "Something went wrong!",

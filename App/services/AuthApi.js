@@ -19,12 +19,7 @@ export default class AuthApiHelper {
       const requestObj = {
         headers: reqHeader,
         method: 'POST',
-        body: JSON.stringify({
-          fullName: 'Tester Testing',
-          email: 'Tester@testing.com',
-          password: 'Admin@123',
-          conPassword: 'Admin@123',
-        }),
+        body: JSON.stringify(data),
       };
       return FetchApi(`${baseUrl}${Paths.login}`, requestObj);
     });

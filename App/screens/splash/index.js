@@ -40,7 +40,7 @@ const Splash = () => {
   return (
     <Stack style={styles.slide}>
       <Center>
-        <Image source={images.launchIcon} alt="image" fadeDuration={0} />
+        <Image source={images.launchIcon} alt="image" />
         <Text style={styles.textStyle}>{t('onboarding.appName')}</Text>
       </Center>
     </Stack>
