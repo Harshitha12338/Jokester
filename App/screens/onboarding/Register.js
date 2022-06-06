@@ -48,8 +48,8 @@ const Register = props => {
 
       axios
         .post('http://backend.jokester.co.in/registeration', data)
-        .then(() => {
-          alert('Successfully signed up');
+        .then(res => {
+          alert(res.data.msg);
           setLoader(false);
           navigation.navigate('dashboard');
         })
